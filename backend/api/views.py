@@ -10,7 +10,7 @@ class NodeViewSet(ModelViewSet):
     serializer_class = NodeSerializer
 
     def list(self, request, *args, **kwargs):
-        nodes = Node.objects.all()
+        nodes = Node.objects.filter(parent=None)
         serializer = self.get_serializer(nodes, many=True)
         return Response({"message": "Fetch All Nodes Successfully", "data": serializer.data})
 
@@ -19,7 +19,7 @@ class NodeViewSet(ModelViewSet):
         if serializer.is_valid():
             serializer.save()
             return Response({"message": "Node Created Successfully", "data": serializer.data}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"message":serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
     def update(self, request, *args, **kwargs):
         node_id = kwargs.get('pk')
