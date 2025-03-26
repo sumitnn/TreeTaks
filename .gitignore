@@ -2,20 +2,20 @@
 # Python / Django Ignore
 # =========================
 backend/__pycache__/
-backend/*.py[cod]
+backend/**/*.py[cod]
+backend/db.sqlite3
 backend/*.sqlite3
 backend/*.log
-backend/db.sqlite3
 
-# env 
+# Virtual Environments
 env/
 venv/
 .env
 *.env
 
-# Django migrations
-backend/*/migrations/*
-backend/!*/migrations/__init__.py
+# Django Migrations
+backend/**/migrations/*
+!backend/**/migrations/__init__.py
 
 # Static & Media Files
 backend/staticfiles/
@@ -37,8 +37,6 @@ client/yarn.lock
 client/build/
 client/dist/
 client/.DS_Store
-
-
 
 # =========================
 # OS & Editor Specific Ignore
